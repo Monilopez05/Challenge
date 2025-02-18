@@ -51,17 +51,22 @@ function App() {
             setNuevosUsuarios([...nuevosUsuarios, nuevo]);
         }
     };
+    const deleteUser = (userId) => {
+        setUsuarios(usuarios.filter(user => user.id !== userId)); 
+        setNuevosUsuarios(nuevosUsuarios.filter(user => user.id !== userId)); 
+      };
 
     return (
         <div style={{ padding: "10px", fontFamily: "Arial" ,  }}>
             <h1>Lista de Usuarios</h1>
             <Buscador filtro={filtro} setFiltro={setFiltro} />
-            <button onClick={agregarUsuario} style={{ marginBottom: "20px" }}>
+            <button onClick={agregarUsuario} style={{ marginBottom: "20px"  ,backgroundColor:"green"}}>
                 Agregar Usuario
+              
             </button>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
                 {usuariosFiltrados.map((user) => (
-                    <Usuarios key={user.id} user={user} />
+                    <Usuarios key={user.id} user={user}  onDelete={() => deleteUser(user.id)}/>
                 ))}
             </div>
         </div>

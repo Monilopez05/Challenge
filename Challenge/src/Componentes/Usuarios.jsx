@@ -1,4 +1,4 @@
-function Usuarios({ user }) {
+function Usuarios({ user , onDelete }) {
     return (
         <div style={{
             
@@ -14,6 +14,8 @@ function Usuarios({ user }) {
             <p><strong>Ciudad:</strong> {user.address.city}</p>
             <p><strong>Teléfono:</strong> {user.phone}</p>
             <p><strong>Empresa:</strong> {user.company.name}</p>
+
+            <button onClick={onDelete}>Eliminar</button>
         </div>
     );
 }
